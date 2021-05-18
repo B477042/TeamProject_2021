@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< Updated upstream
 /*
 *   Main Game Manager
 *   : singleton class
@@ -47,11 +48,23 @@ public class MainGameManager : MonoBehaviour
 
 
 
+=======
+public class MainGameManager : MonoBehaviour
+{
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
+<<<<<<< Updated upstream
    
+=======
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+>>>>>>> Stashed changes
 }
