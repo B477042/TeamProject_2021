@@ -304,3 +304,4 @@ Received Import Request.
 Start importing Assets/ObjectAssets/Standard Assets/Environment/TerrainAssets/SurfaceTextures/Materials/MudRockyAlbedoSpecular.mat using Guid(f0adda6109515a943a5ee816257b7df6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b64776820bb3c2b1e53fe0799ba9169f') in 0.013534 seconds
   Import took 0.016390 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
