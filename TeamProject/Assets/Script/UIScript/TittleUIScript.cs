@@ -43,11 +43,15 @@ public class TittleUIScript : MonoBehaviour
         
     }
 
+    public void OnStartButton()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+    }
 
     //Play Button Click Sound
     public void HoverAtButton()
     {
-        buttonAudio.Play();
+        buttonAudio.Play(); 
     }
 
     //Close Options window
@@ -93,15 +97,12 @@ public class TittleUIScript : MonoBehaviour
         #endif
     }
 
-
-
     public void Slide_BGM(Slider slider )
     {
         print(slider.value);
         obj_TittleBGM.GetComponent<AudioSource>().volume = slider.value;
 
     }
-
 
     private void muteBGM()
     {
@@ -112,9 +113,5 @@ public class TittleUIScript : MonoBehaviour
         else
             obj_TittleBGM.GetComponent<AudioSource>().mute = true;
     }
-
-    
-
-
 }
  
