@@ -45,9 +45,12 @@ public class EnemySpawnManager : MonoBehaviour
     //* objNum : csv file search factor
     public void SpawnEnemy( Transform OtherTransform,  uint Row)
     {
+
         //Load SpawnTable.csv file 
         var data = spawnTable1[(int)Row];
         
+        //
+
         switch(data[PATTERN])
         {
             //No.0 spawn pattern
