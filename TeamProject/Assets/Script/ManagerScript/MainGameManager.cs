@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 /*
 *   Main Game Manager
 *   : singleton class
