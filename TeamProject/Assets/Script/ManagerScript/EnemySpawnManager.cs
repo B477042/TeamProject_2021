@@ -59,7 +59,7 @@ public class EnemySpawnManager : MonoBehaviour
             print("case 0");
             
             
-
+            
             break;
             
             //No.1 spawn pattern
