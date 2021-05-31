@@ -48,7 +48,8 @@ public class EnemySpawnManager : MonoBehaviour
 
         //Load SpawnTable.csv file 
         var data = spawnTable1[(int)Row];
-        
+        //position which is represent standard position
+        var standardPos = OtherTransform.localPosition;
         //
 
         switch(data[PATTERN])
@@ -56,6 +57,9 @@ public class EnemySpawnManager : MonoBehaviour
             //No.0 spawn pattern
             case 0:
             print("case 0");
+            
+            
+
             break;
             
             //No.1 spawn pattern

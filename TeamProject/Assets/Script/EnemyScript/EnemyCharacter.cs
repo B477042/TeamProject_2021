@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class EnemyCharacter : MonoBehaviour
 {
+    //Receive value from controller
+    private Vector3 targetPos;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +21,8 @@ public class EnemyCharacter : MonoBehaviour
     {
         
     }
+
+
+
+
 }
