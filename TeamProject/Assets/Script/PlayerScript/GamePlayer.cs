@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 /*
 *   Main Player's Script
-*   
+*   Control player's physical stats or game stats
 */
 public class GamePlayer : MonoBehaviour
 {

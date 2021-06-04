@@ -26,12 +26,12 @@ public class BGSprintArm : MonoBehaviour
         var comp_sprite = gameObject.GetComponent<SpriteRenderer>();
         if(!comp_sprite){print("There isn't any sprite renderer in gameObject");return;}
         BG = comp_sprite.sprite;
-    
+        
     }
 
     void UpdateBG()
     {
-
+        
     }
 
 
