@@ -2,25 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+*   It's a class that's in charge of manipulating the player.
+
+*/
+
+
 public class GamePlayerController : MonoBehaviour
 {
     //Delegate for mapping actions input functions
     public delegate void DeleActionFunc();
     //Delegate for mapping axis input functions
-    public delegate float DeleAxisFunc(float value);
+    public delegate float DeleAxisFunc(float Value);
     //Dictionary for action inputs
     private Dictionary<KeyCode,DeleActionFunc> dic_ActionFuncs;
     //Dictionary for axis inputs
     private Dictionary<KeyCode,DeleAxisFunc>dic_AxisFuncs;
-    //Point gameObject's Rigidbody2D
-    private Rigidbody2D rigi_player;
+   
+    //Point gameObject's player script
+    private GamePlayer player;
+
  //===============================================================
  //                         Unity Funcs
 
     // Start is called before the first frame update
     void Start()
     {
+        //Initialize input dictionary
         initInputDics();
+        //Initialize component pointer
         initComponents();
     }
 
@@ -45,15 +55,13 @@ public class GamePlayerController : MonoBehaviour
         dic_AxisFuncs=new Dictionary<KeyCode, DeleAxisFunc>();
 
         //Bind Axis input
-        DeleAxisFunc  moveHor = moveHorizenial;
+        dic_AxisFuncs.Add(KeyCode.A,moveHorizenial);
+        dic_AxisFuncs.Add(KeyCode.D,moveHorizenial);
       
-        dic_AxisFuncs.Add(KeyCode.A,moveHor);
-        dic_AxisFuncs.Add(KeyCode.D,moveHor);
     
         //Bind Action Input
-        DeleActionFunc actJump = jump;
-        dic_ActionFuncs.Add(KeyCode.Space,actJump);
-
+        dic_ActionFuncs.Add(KeyCode.Space,jump);
+        dic_ActionFuncs.Add(KeyCode.Mouse0,attack);
        
 
 
@@ -97,29 +105,19 @@ public class GamePlayerController : MonoBehaviour
       
     }
 
-    private float moveHorizenial(float axis)
+    private float moveHorizenial(float Axis)
     {
-        
-        float speed_x = axis*300.0f;
-        Vector2 vec_force=new Vector2(speed_x,1.0f);
-        
-        rigi_player.AddForce(vec_force);
-       
-        return axis;
+        return   player.MoveHorizenial(Axis);
     }
   
     private void jump()
     {
-        Vector2 vec_force =new Vector2(0.0f,500.0f);
-       rigi_player.AddForce(vec_force);
-
-        var temp = gameObject.GetComponent<GamePlayerStat>();
-        if(!temp)return;
-
-        temp.HP=10.0f;
-
+        player.Jump();
     }
-
+    private void attack()
+    {
+        player.Attack();
+    }
 
    
 
@@ -127,15 +125,12 @@ public class GamePlayerController : MonoBehaviour
 //      Call at Start() or Awake()
     void initComponents()
     {
-        rigi_player = gameObject.GetComponent<Rigidbody2D>();
-        if(!rigi_player)
+        player = gameObject.GetComponent<GamePlayer>();
+        if(!player)
         {
-            print("There isn't rigid_2d");
+            print("There isn't game player script");
             return;
         }
-
-
-
     }
 
 //===============================================================   
