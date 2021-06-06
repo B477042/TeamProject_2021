@@ -23,6 +23,7 @@ public class GamePlayer : MonoBehaviour, I_Attack
     //Bullet Manager Component
     private Mags mags;
 
+    private Vector3 FirePoint=new Vector3(1.74f,0.14f,0);
     // Start is called before the first frame update
     void Start()
     {
@@ -124,8 +125,9 @@ public class GamePlayer : MonoBehaviour, I_Attack
     //Attack 
     public void Attack()
     {
-        print("attack");
-        
+        Vector3 StartPoint = gameObject.transform.position;
+
+        mags.Fire(StartPoint,Input.mousePosition);
         
     }
 

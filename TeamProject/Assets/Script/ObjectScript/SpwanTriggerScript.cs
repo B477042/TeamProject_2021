@@ -19,17 +19,12 @@ public class SpwanTriggerScript : MonoBehaviour
         if(!trigger)
             print("Box Trigger is null");
        
-
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        
-         
         if(bIsActivated)return;
        
-    
         if(other.gameObject.tag !="Player")
             {return;}
         
@@ -38,8 +33,6 @@ public class SpwanTriggerScript : MonoBehaviour
         print("on trigger entered  " + EnemyPrefabs.Count+" : Size" );
         EnemySpawnManager.Instance.SpawnEnemy(other.gameObject.transform, SpawnPattern, EnemyPrefabs);
     
-
-
     }   
    
 }
