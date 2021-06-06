@@ -9,7 +9,7 @@ using UnityEngine;
 *   The controller commands the operation and the player(this script) processes it.
 *   Stat and State components is controlled by this for only
 */
-public class GamePlayer : MonoBehaviour
+public class GamePlayer : MonoBehaviour, I_Attack
 {
     //Point gameObject's Animator
     private Animator animator;
@@ -20,6 +20,8 @@ public class GamePlayer : MonoBehaviour
     //Point gameObject's Game Player State
     private GamePlayerState state;
     private BoxCollider2D collision;
+    //Bullet Manager Component
+    private Mags mags;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,8 @@ public class GamePlayer : MonoBehaviour
 
         collision = gameObject.GetComponent<BoxCollider2D>();
         if(!collision){print("There isn't BoxCollider2D");return;}
+        mags = gameObject.GetComponent<Mags>();
+        if(!mags){print("There isn't Mags");return;}
     }
 
     // Update is called once per frame
@@ -117,11 +121,11 @@ public class GamePlayer : MonoBehaviour
         setAnimState(EPlayerState.InAir);
         state.bIsInAir=true;
     }
-
+    //Attack 
     public void Attack()
     {
         print("attack");
-        //state.playerState = EPlayerState.Attack;
+        
         
     }
 

@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InterfaceColletion : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+//Attack order Interface
+public interface I_Attack {
+    public void Attack();
 }
+//Damage Process Interface
+public interface I_TakeDamage
+{
+    /*
+    *   Damaged Object : GameObject that taken damage from other
+    *   Damage Causor : GameObject that invoke this function
+    *   Amount : number of damage
+    */
+    public float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount);
+}
+
+
+
