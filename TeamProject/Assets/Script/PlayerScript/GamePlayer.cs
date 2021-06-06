@@ -125,9 +125,11 @@ public class GamePlayer : MonoBehaviour, I_Attack
     //Attack 
     public void Attack()
     {
-        Vector3 StartPoint = gameObject.transform.position;
+        var DestPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        mags.Fire(StartPoint,Input.mousePosition);
+        Vector3 StartPoint = gameObject.transform.position;
+        
+        mags.Fire(StartPoint,DestPos);
         
     }
 

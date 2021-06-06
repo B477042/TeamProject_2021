@@ -8,12 +8,14 @@ public class Projectile : MonoBehaviour
     public ParticleSystem VFX_Hit;
     private bool bIsActivated=false;
     private Vector2 direction;
-    private float speed=0.0001f;
+    private float speed=0.001f;
+    private Vector3 originScale;
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(false);
+        originScale = gameObject.transform.localScale;
     }
 
     // Update is called once per frame
@@ -29,6 +31,14 @@ public class Projectile : MonoBehaviour
     {
         bIsActivated=true;
         direction = DestPoint - StartPoint;
+        if(direction.x<0)
+            {
+               Vector3 newScale = new Vector3(originScale.x*-1,originScale.y,originScale.z);
+               gameObject.transform.localScale=newScale;
+            }
+        else
+            gameObject.transform.localScale=originScale;
+
         ToggleHide(false);
     }
     public void ToggleHide(bool bResult)
@@ -40,6 +50,7 @@ public class Projectile : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+            gameObject.transform.localScale = originScale;
             damage++;
         }
     }
