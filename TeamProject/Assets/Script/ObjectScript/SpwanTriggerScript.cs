@@ -5,15 +5,13 @@ using UnityEngine;
 public class SpwanTriggerScript : MonoBehaviour
 {
       //List of Enemy Objects to Spawn
-    public List<GameObject> EnemyPrefabs;
+    public List<GameObject> EnemyPrefabs=new List<GameObject>();
     private BoxCollider2D trigger=null;
     public bool  bIsActivated=false;
     //object number. Set Value in Editor
-    public uint ObjectNum=0;
+    public uint SpawnPattern=0;
    
-   private void Awake() {
-       EnemyPrefabs=new List<GameObject>();
-   }
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -28,17 +26,17 @@ public class SpwanTriggerScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
         
-         print("hello");
+         
         if(bIsActivated)return;
        
     
         if(other.gameObject.tag !="Player")
-            {print("Not Player");return;}
+            {return;}
         
-        bIsActivated=false;
+        bIsActivated=true;
 
-        print("on trigger entered");
-        EnemySpawnManager.Instance.SpawnEnemy(other.gameObject.transform, ObjectNum, EnemyPrefabs);
+        print("on trigger entered  " + EnemyPrefabs.Count+" : Size" );
+        EnemySpawnManager.Instance.SpawnEnemy(other.gameObject.transform, SpawnPattern, EnemyPrefabs);
     
 
 

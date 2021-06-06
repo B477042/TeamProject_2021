@@ -110,7 +110,7 @@ public class GamePlayerController : MonoBehaviour
             
             if(Input.GetKeyUp(tempDic.Key))
                 {
-                    print( tempDic.Key+ "is up");
+                   // print( tempDic.Key+ "is up");
                 }
         }
         

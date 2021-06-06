@@ -61,8 +61,7 @@ AnimatorState:
   m_Name: Walk
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -1834353654754257812}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -256,8 +255,7 @@ AnimatorState:
   m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -3062261103696366233}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -482,10 +480,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -1348946528011124268}
-    m_Position: {x: 370, y: 220, z: 0}
+    m_Position: {x: 320, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5499902732901344599}
-    m_Position: {x: 650, y: 220, z: 0}
+    m_Position: {x: 650, y: 240, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -1569940275186586834}
@@ -503,7 +501,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 160, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -1348946528011124268}
+  m_DefaultState: {fileID: -5499902732901344599}
 --- !u!1109 &5890387157085801471
 AnimatorTransition:
   m_ObjectHideFlags: 1
