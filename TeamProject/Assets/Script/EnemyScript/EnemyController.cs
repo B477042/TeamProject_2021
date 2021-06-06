@@ -13,7 +13,8 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private EnemyCharacter owingCharacter;
-    
+    public GameObject TargetObject{get;set;}
+    public StateMachineBehaviour FSM;
 
     // Start is called before the first frame update
     void Start()

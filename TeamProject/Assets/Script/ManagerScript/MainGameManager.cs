@@ -13,7 +13,15 @@ using UnityEngine;
 
 public class MainGameManager : MonoBehaviour
 {
+    //=================
+    //| private varbs |
+    //=================
+    private float playeScore=0.0f;
+    //The name of Current Scene. 
+    private string currentScene;
     
+
+
     private static MainGameManager instance = null;
     public static MainGameManager Instance
     {
