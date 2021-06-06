@@ -11,8 +11,6 @@ public class TittleUIScript : MonoBehaviour
     public GameObject SFX_TittleBGM;
     [SerializeField]
     public GameObject UI_Options;
- 
-
 
     //Options Window Object
     private static GameObject obj_Options;
@@ -21,11 +19,6 @@ public class TittleUIScript : MonoBehaviour
     
     //Public Button Click Sound Source Object
     private static AudioSource buttonAudio;
-
- 
-   
-    
-
 
     // Start is called before the first frame update
     void Start()

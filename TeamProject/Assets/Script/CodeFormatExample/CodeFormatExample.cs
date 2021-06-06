@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CodeFormatExample : MonoBehaviour
 {
-    [SerializeField]
-    public string House;
-    [SerializeField]
-    private string home;
+[SerializeField]
+public string House;
+[SerializeField]
+private string home;
 
-    public static double Height;
-    private static double Weight;
+public static double Height;
+private static double Weight;
 
     public string Name;
     private int age;
@@ -19,16 +19,16 @@ public class CodeFormatExample : MonoBehaviour
     private int n_coke;
 
 
-    public void GetID(int Input) 
-    {
+public void GetID(int Input) 
+{
 
  
-    }
+}
 
-    private void getPW(int InputParam)
-    {
+private void getPW(int InputParam)
+{
 
-    }
+}
 
 
 
