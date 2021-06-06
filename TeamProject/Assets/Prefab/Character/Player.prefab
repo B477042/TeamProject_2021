@@ -193,9 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec144e44ac73bd4385fbe51acd233b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  speed: 50
   accelFactor: 1.5
-  jumpFactor: 1000
+  jumpFactor: 600
 --- !u!114 &9171600770542253328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +210,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerState: 1
   bIsFacingR: 1
+  bIsADS: 0
+  bIsDamaged: 0
+  bIsDead: 0
+  bIsInAir: 0
 --- !u!1 &7747927585924953791
 GameObject:
   m_ObjectHideFlags: 0

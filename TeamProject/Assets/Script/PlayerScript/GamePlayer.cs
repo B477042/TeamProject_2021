@@ -43,19 +43,26 @@ public class GamePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        checkVelocity();
     }
     //===============================================
     //      Colllision Functions
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag=="Landscape")
         {
-            print("landscape!");
             setAnimState(EPlayerState.OnGround);
         }
 
 
     }
+
+    private void OnCollisionExit2D(Collision2D other) {
+           if(other.gameObject.tag=="Landscape")
+        {
+            setAnimState(EPlayerState.InAir);
+        }
+    }
+
     //===============================================
     //      Animator Funtions
     private void setAnimState(EPlayerState NewState) 
@@ -64,7 +71,16 @@ public class GamePlayer : MonoBehaviour
         animator.SetInteger("State",(int)state.playerState);
         print("state changed");
     }
-    
+    private float checkVelocity()
+    {
+        float result = rigid.velocity.magnitude;
+        if(result!=0)
+            setAnimState(EPlayerState.Walk);
+        else
+            setAnimState(EPlayerState.OnGround);
+
+        return result;
+    }
 
     
     //===============================================
@@ -99,6 +115,7 @@ public class GamePlayer : MonoBehaviour
         Vector2 newForce =new Vector2(0.0f,stat.GetJumpFactor());
         rigid.AddForce(newForce);
         setAnimState(EPlayerState.InAir);
+        state.bIsInAir=true;
     }
 
     public void Attack()
