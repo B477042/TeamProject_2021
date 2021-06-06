@@ -43,7 +43,7 @@ public class GamePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkVelocity();
+        //checkVelocity();
     }
     //===============================================
     //      Colllision Functions
@@ -71,16 +71,16 @@ public class GamePlayer : MonoBehaviour
         animator.SetInteger("State",(int)state.playerState);
         print("state changed");
     }
-    private float checkVelocity()
-    {
-        float result = rigid.velocity.magnitude;
-        if(result!=0)
-            setAnimState(EPlayerState.Walk);
-        else
-            setAnimState(EPlayerState.OnGround);
+    // private float checkVelocity()
+    // {
+    //     float result = rigid.velocity.magnitude;
+    //     if(result!=0)
+    //         setAnimState(EPlayerState.Walk);
+    //     else
+    //         setAnimState(EPlayerState.OnGround);
 
-        return result;
-    }
+    //     return result;
+    // }
 
     
     //===============================================

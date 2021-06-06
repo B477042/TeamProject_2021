@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    //List of Enemy Objects to Spawn
-    public List<GameObject> EnemyPrefabs;
+  
 
     private  const string SPAWNTABLE_1="spawnTable1";
     private const string PATTERN="pattern";
@@ -43,21 +42,26 @@ public class EnemySpawnManager : MonoBehaviour
     //* Spawn enemies to world 
     //* otherTransform : Coordinates to which the spawn point is referenced
     //* objNum : csv file search factor
-    public void SpawnEnemy( Transform OtherTransform,  uint Row)
+    public void SpawnEnemy( Transform OtherTransform,  uint Row, List<GameObject> EnemyPrefabs)
     {
 
         //Load SpawnTable.csv file 
         var data = spawnTable1[(int)Row];
         //position which is represent standard position
-        var standardPos = OtherTransform.localPosition;
+        var standardPos = OtherTransform.position;
         //
 
-        switch(data[PATTERN])
+        int n_num = (int)data[NUM];
+        switch((int)data[PATTERN])
         {
             //No.0 spawn pattern
             case 0:
             print("case 0");
-            
+            // for(int i=0;i<n_num;++i)
+            // {
+            //     var createObject = Instantiate<GameObject>(EnemyPrefabs[0]);
+            //     createObject.transform.position = standardPos +new Vector3(16+i,6,0);
+            // }
             
             
             break;

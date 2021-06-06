@@ -71,7 +71,7 @@ public class GamePlayerController : MonoBehaviour
     {
     //Change input process to bring key value from input options manager asap
     //We don't have much time, so i'll impliment input code by const value
-    //Input.anyKeyDown
+    
          //Action Input
         if(Input.anyKeyDown)
         {
@@ -91,18 +91,32 @@ public class GamePlayerController : MonoBehaviour
         {
             foreach(var tempDic in dic_AxisFuncs)
           {
-              
+            
               if(Input.GetKey(tempDic.Key))
               {
              
                 tempDic.Value(Input.GetAxis("Horizontal"));
            
               }
+           
+           
           }
          
         }
+
         
-      
+       foreach(var tempDic in dic_AxisFuncs)
+        {
+            
+            if(Input.GetKeyUp(tempDic.Key))
+                {
+                    print( tempDic.Key+ "is up");
+                }
+        }
+        
+        
+
+        
     }
 
     private float moveHorizenial(float Axis)

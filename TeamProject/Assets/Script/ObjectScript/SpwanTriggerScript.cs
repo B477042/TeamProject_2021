@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class SpwanTriggerScript : MonoBehaviour
 {
+      //List of Enemy Objects to Spawn
+    public List<GameObject> EnemyPrefabs;
     private BoxCollider2D trigger=null;
     public bool  bIsActivated=false;
     //object number. Set Value in Editor
     public uint ObjectNum=0;
    
+   private void Awake() {
+       EnemyPrefabs=new List<GameObject>();
+   }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +38,7 @@ public class SpwanTriggerScript : MonoBehaviour
         bIsActivated=false;
 
         print("on trigger entered");
-        EnemySpawnManager.Instance.SpawnEnemy(other.gameObject.transform, ObjectNum);
+        EnemySpawnManager.Instance.SpawnEnemy(other.gameObject.transform, ObjectNum, EnemyPrefabs);
     
 
 
