@@ -24,25 +24,16 @@ public class GamePlayer : MonoBehaviour, I_Attack
     private Mags mags;
 
     private Vector3 FirePoint=new Vector3(1.74f,0.14f,0);
+
+
+    //==================================================
     // Start is called before the first frame update
     void Start()
     {
-        animator=gameObject.GetComponent<Animator>();
-        if(!animator){print("there isn't Animator");return;}
+        initializeComponents();
 
-        rigid = gameObject.GetComponent<Rigidbody2D>();
-        if(!rigid){print("There isn't rigid_2d");return;}
+        MainGameManager.Instance.Player = gameObject;
 
-        stat = gameObject.GetComponent<GamePlayerStat>();
-        if(!stat){print("There isn't Game Player Stat");return;}
-
-        state = gameObject.GetComponent<GamePlayerState>();
-        if(!state){print("Thee isn't Game Player State");return;}
-
-        collision = gameObject.GetComponent<BoxCollider2D>();
-        if(!collision){print("There isn't BoxCollider2D");return;}
-        mags = gameObject.GetComponent<Mags>();
-        if(!mags){print("There isn't Mags");return;}
     }
 
     // Update is called once per frame
@@ -50,6 +41,7 @@ public class GamePlayer : MonoBehaviour, I_Attack
     {
         //checkVelocity();
     }
+    
     //===============================================
     //      Colllision Functions
     private void OnCollisionEnter2D(Collision2D other) {
@@ -131,6 +123,28 @@ public class GamePlayer : MonoBehaviour, I_Attack
         
         mags.Fire(StartPoint,DestPos);
         
+    }
+    //========================================================================
+    //  private funcs
+    //Initialize Components Value
+    void initializeComponents()
+    {
+        animator=gameObject.GetComponent<Animator>();
+        if(!animator){print("there isn't Animator");return;}
+
+        rigid = gameObject.GetComponent<Rigidbody2D>();
+        if(!rigid){print("There isn't rigid_2d");return;}
+
+        stat = gameObject.GetComponent<GamePlayerStat>();
+        if(!stat){print("There isn't Game Player Stat");return;}
+
+        state = gameObject.GetComponent<GamePlayerState>();
+        if(!state){print("Thee isn't Game Player State");return;}
+
+        collision = gameObject.GetComponent<BoxCollider2D>();
+        if(!collision){print("There isn't BoxCollider2D");return;}
+        mags = gameObject.GetComponent<Mags>();
+        if(!mags){print("There isn't Mags");return;}
     }
 
 }

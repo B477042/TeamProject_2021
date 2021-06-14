@@ -24,7 +24,7 @@ public class BGSprintArm : MonoBehaviour
     void Start()
     {
         //setBG();
-
+         
     }
 
     // Update is called once per frame
@@ -44,7 +44,8 @@ public class BGSprintArm : MonoBehaviour
 
     void UpdateBG()
     {
-        
+       Vector3 pos_Standard = Obj_Player.transform.localPosition;
+       
     }
 
 

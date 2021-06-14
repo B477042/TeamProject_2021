@@ -13,13 +13,12 @@ using UnityEngine;
 
 public class MainGameManager : MonoBehaviour
 {
-    //=================
-    //| private varbs |
-    //=================
+    //=============================
+    //Game Information
     private float playeScore=0.0f;
     //The name of Current Scene. 
     private string currentScene;
-    
+    public GameObject Player;
 
 
     private static MainGameManager instance = null;
@@ -44,6 +43,11 @@ public class MainGameManager : MonoBehaviour
         // Debug.LogWarning("Game manger instance Called");
 
         DontDestroyOnLoad(this);
+    }
+
+    private void Start() 
+    {
+        
     }
 
 
