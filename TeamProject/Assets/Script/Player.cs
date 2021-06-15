@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     private Animator anim;
@@ -33,43 +33,101 @@ public class Player : MonoBehaviour
         m_SpriteRenderer.flipX = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static bool bJump;
+    public static bool bRightMove;
+    public static bool bLeftMove;
+    public static bool bAttack;
+    public ButtonExtension LeftBtn;
+    public ButtonExtension RightBtn;
+    private void Awake()
     {
-        //float h = Input.GetAxis("Horizontal");
-        //if (Mathf.Abs(h) > 0.2f)
-        //{
-        //    anim.SetFloat("Speed",1);
-        //}
-        //else
-        //{
-        //    anim.SetFloat("Speed", 0);
-        //}
-
-        //if (h >= 0)
-        //{
-        //    m_SpriteRenderer.flipX = false;
-        //}
-        //else
-        //{
-        //    m_SpriteRenderer.flipX = true;
-        //}
-
-        //transform.Translate(new Vector2(h * speed * Time.deltaTime, 0));
-
-
-        if (Input.GetButtonDown("Jump") && isGround)
-        {
-            jumpPress = true;
-        }
-        if (Input.GetButtonDown("Fire1"))
-        {
-            isFirePress = true;
-        }
+        LeftBtn.onPress.AddListener(LeftMove);
+        RightBtn.onPress.AddListener(RightMove);
     }
 
+
+    private void LeftMove()
+    {
+        anim.SetFloat("Speed", 1);
+        this.transform.Translate(-Time.deltaTime*10, 0, 0);
+        this.transform.localScale = new Vector3(-1, 1, 1);
+    }
+    private void RightMove()
+    {
+        anim.SetFloat("Speed", 1);
+        this.transform.Translate(Time.deltaTime * 10, 0, 0);
+        this.transform.localScale = new Vector3(1, 1, 1);
+    }
+
+    void Update()
+    {
+        if (bJump)
+        {
+            jumpPress = true;
+            bJump = false;
+        }
+
+        //if (bRightMove)
+        //{
+        //    m_rgPlayer.velocity = new Vector2(horizontalMove * speed, m_rgPlayer.velocity.y);
+        //    bRightMove = false;
+        //}
+        //if (bLeftMove)
+        //{
+        //    bLeftMove = false;
+        //}
+        if (bAttack)
+        {
+            isFirePress = true;
+            bAttack = false;
+        }
+
+
+
+    }
+    public Slider HPSlider;
+    public Text ScoreText;
+    public int hp = 5;
+    public int CurHP = 5;
+    // Update is called once per frame
+    //void Update()
+    //{
+    //float h = Input.GetAxis("Horizontal");
+    //if (Mathf.Abs(h) > 0.2f)
+    //{
+    //    anim.SetFloat("Speed",1);
+    //}
+    //else
+    //{
+    //    anim.SetFloat("Speed", 0);
+    //}
+
+    //if (h >= 0)
+    //{
+    //    m_SpriteRenderer.flipX = false;
+    //}
+    //else
+    //{
+    //    m_SpriteRenderer.flipX = true;
+    //}
+
+    //transform.Translate(new Vector2(h * speed * Time.deltaTime, 0));
+
+
+    //if (Input.GetButtonDown("Jump") && isGround)
+    //{
+    //    jumpPress = true;
+    //}
+    //if (Input.GetButtonDown("Fire1"))
+    //{
+    //    isFirePress = true;
+    //}
+    //}
+    public static int Score;
     private void FixedUpdate()
     {
+        HPSlider.value = (float)CurHP / (float)hp;
+        ScoreText.text = Score.ToString();
         isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, ground);
         GroundMovement();
         Jump();
@@ -78,8 +136,8 @@ public class Player : MonoBehaviour
 
     void GroundMovement()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal");//只返回-1，0，1
-        m_rgPlayer.velocity = new Vector2(horizontalMove * speed, m_rgPlayer.velocity.y);
+        //horizontalMove = Input.GetAxisRaw("Horizontal");//只返回-1，0，1
+        //m_rgPlayer.velocity = new Vector2(horizontalMove * speed, m_rgPlayer.velocity.y);
 
         if (horizontalMove != 0)
         {
@@ -124,20 +182,22 @@ public class Player : MonoBehaviour
         //开火
         if (isFirePress)
         {
-            if (horizontalMove == 0 && !isInIdleGun)
-            {
-                isFirePress = false;
-                isInIdleGun = true;
-                anim.SetBool("idleGun", true);
-                Fire();
-            }
-            else if (horizontalMove != 0 && !isInWalkGun)
-            {
-                isFirePress = false;
-                isInWalkGun = true;
-                anim.SetBool("walkGun", true);
-                Fire();
-            }
+            anim.SetBool("idleGun", true);
+            Fire(); isFirePress = false;
+            //if (horizontalMove == 0 && !isInIdleGun)
+            //{
+            //    isFirePress = false;
+            //    isInIdleGun = true;
+            //    anim.SetBool("idleGun", true);
+            //    Fire();
+            //}
+            //else if (horizontalMove != 0 && !isInWalkGun)
+            //{
+            //    isFirePress = false;
+            //    isInWalkGun = true;
+            //    anim.SetBool("walkGun", true);
+            //    Fire();
+            //}
         }
 
     }
