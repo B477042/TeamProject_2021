@@ -31,8 +31,8 @@ public class GamePlayer : MonoBehaviour, I_Attack
     void Start()
     {
         initializeComponents();
-
-        MainGameManager.Instance.Player = gameObject;
+        // if(!MainGameManager.Instance.Player)
+        //     MainGameManager.Instance.Player = gameObject;
 
     }
 
