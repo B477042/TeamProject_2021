@@ -44,7 +44,7 @@ public class Mags : MonoBehaviour
         var proj = bullet.GetComponent<Projectile>();
         var forwardVector = gameObject.transform.position+gameObject.transform.forward;
         
-        proj.Fire(StartPoint,DestPoint,forwardVector);
+        proj.Fire(StartPoint,DestPoint );
 
         ++idx_current;
         if(idx_current>=Capacity)

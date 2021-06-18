@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
 
 /*  
     @Params
-    @StartPoint : Invoked component's GameObject position
+    @StartPoint : Mag component's GameObject position
     @DestPoint : The point where mouse clicked
 */
     public void Fire(Vector2 StartPoint, Vector2 DestPoint)
@@ -40,24 +40,28 @@ public class Projectile : MonoBehaviour
         direction = DestPoint - StartPoint;
         
         //If Direction is negative number, Turn 180 degrees( scale*-1.0f ).
-        //The gameobject is facing right side
+         
         if(direction.x<0)
             {
                Vector3 newScale = new Vector3(originScale.x*-1,originScale.y,originScale.z);
                gameObject.transform.localScale=newScale;
-               bIsFacingLeft=false;
+                
             }
         else
             gameObject.transform.localScale=originScale;
 
         //Calaculate Angle between ForwardPoint and DestPoint
         //If Calaculate Angle is over +-90 Degrees. Don't fire
-        // Vector2 vecA = DestPoint-StartPoint;
-        // Vector2 vecB = ForwardPoint - StartPoint;
-        // float dotProduct = Vector2.Dot(vecA,vecB);
-        // float Angle = Mathf.Acos(dotProduct);
-        // print("Angle is "+Angle);
-
+        float sign = 1.0f;
+        if(!bIsFacingLeft)
+            sign=-1.0f;
+        Vector2 forward = new Vector2(1.0f,0.0f)*sign;
+        float dotProduct = Vector3.Dot(direction.normalized, forward);
+        float Angle = Mathf.Acos(dotProduct)*Mathf.Rad2Deg;
+        print("Angle is "+Angle+" vec A = "+direction+" forward "+forward + " Dot "+dotProduct);
+        gameObject.transform.rotation = Quaternion.Euler(0,0,Angle);
+         
+        
         //Set This Object is Activated
         bIsActivated=true;
       
