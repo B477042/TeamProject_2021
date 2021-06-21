@@ -12,19 +12,21 @@ using UnityEngine;
 */
 public class BGSprintArm : MonoBehaviour
 {
-    //Leftmost point the player can go to
-    [SerializeField] private Vector3 Pos_Start;
-    //Righttmost point the player can go to
-    [SerializeField] private Vector3 Pos_End;
+    //LeftTop point the player can go to  -6.4,15
+    [SerializeField] private Vector2 Pos_LeftTop;
+    //RightDown point the player can go to 206,-8
+    [SerializeField] private Vector2 Pos_RightDown;
+
     //Refer to the transform information for the object
     [SerializeField] private GameObject Obj_Player;
     [SerializeField] private Sprite BG;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        //setBG();
-         
+        setBG();
+        
     }
 
     // Update is called once per frame
@@ -36,9 +38,10 @@ public class BGSprintArm : MonoBehaviour
     // Get BG Texture From GameObject's Sprite Renderer Component
     void setBG()
     {
-        // var comp_sprite = gameObject.GetComponent<SpriteRenderer>();
-        // if(!comp_sprite){print("There isn't any sprite renderer in gameObject");return;}
-        // BG = comp_sprite.sprite;
+        
+        //Add Sprite Renderer to GameObject
+        spriteRenderer=gameObject.AddComponent<SpriteRenderer>();
+        spriteRenderer.sprite = BG;
         
     }
 

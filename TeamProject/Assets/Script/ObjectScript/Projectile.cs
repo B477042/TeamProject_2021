@@ -65,14 +65,14 @@ public class Projectile : MonoBehaviour
         //If direction.y is negative number, degrees also be negative number
         if(direction.y <0)
             {
-                print("Direction Y is "+direction.y);
+                //print("Direction Y is "+direction.y);
                 Angle*=-1;
             }
         
 
 
 
-        print("Angle is "+Angle+" vec A = "+direction+" forward "+forward + " Dot "+dotProduct);
+       // print("Angle is "+Angle+" vec A = "+direction+" forward "+forward + " Dot "+dotProduct);
         gameObject.transform.rotation = Quaternion.Euler(0,0,Angle);
          
         
