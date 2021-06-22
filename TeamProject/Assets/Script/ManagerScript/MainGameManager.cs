@@ -29,27 +29,32 @@ public class MainGameManager : MonoBehaviour
             return instance;
         }
     }
-
-
-
+ 
     private void Awake()
     {
-        if (instance != null)
+        if(instance!=null)
         {
             DestroyImmediate(gameObject);
             return;
         }
         instance = this;
-        // Debug.LogWarning("Game manger instance Called");
+       // Debug.LogWarning("Game manger instance Called");
 
         DontDestroyOnLoad(this);
     }
 
-    private void Start() 
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         
     }
-
-
 }
-

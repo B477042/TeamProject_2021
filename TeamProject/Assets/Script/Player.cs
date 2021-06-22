@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         }
         if (jumpPress && isGround)
         {
-            Debug.LogError("jump1");
+            //Debug.LogError("jump1");
             isJump = true;
             m_rgPlayer.velocity = new Vector2(m_rgPlayer.velocity.x, jumpForce);
             jumpPress = false;
@@ -157,14 +157,14 @@ public class Player : MonoBehaviour
     {
         isInIdleGun = false;
         isFirePress = false;
-        Debug.LogError("ddddddddd");
+        //Debug.LogError("ddddddddd");
         anim.SetBool("idleGun", false);
     }
     void WalkGunEnd()
     {
         isInWalkGun = false;
         isFirePress = false;
-        Debug.LogError("ddddddddd");
+        //Debug.LogError("ddddddddd");
         anim.SetBool("walkGun", false);
     }
 }
