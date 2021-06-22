@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Attack order Interface
-public interface I_Attack {
+public interface I_Attack 
+{
     public void Attack();
 }
 //Damage Process Interface
@@ -19,4 +20,10 @@ public interface I_TakeDamage
 }
 
 
+//====================================
+//  AI Script
+public interface I_TreeNode
+{
+    
 
+}

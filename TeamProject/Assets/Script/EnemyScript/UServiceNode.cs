@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UServiceNode : MonoBehaviour
+public class UServiceNode : MonoBehaviour,I_TreeNode
 {
     // Start is called before the first frame update
     void Start()
