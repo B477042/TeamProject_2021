@@ -31,13 +31,21 @@ public class Mags : MonoBehaviour
         
     }
     //after report. calculate angle shoot
-    public void Fire(Vector2 StartingPoint, Vector2 DestPoint)
+    /*
+    *   Params
+    *   StartPoint : GameObject position
+    *   DestPoint : Mouse-click coordinates
+    */
+    public void Fire(Vector2 StartPoint, Vector2 DestPoint)
     {
         var bullet = list_Bullets[idx_current];
 
-        bullet.transform.position = StartingPoint;
+        bullet.transform.position = StartPoint;
         var proj = bullet.GetComponent<Projectile>();
-        proj.Fire(StartingPoint,DestPoint);
+        var forwardVector = gameObject.transform.position+gameObject.transform.forward;
+        var bIsFacingR = gameObject.GetComponent<GamePlayerState>().bIsFacingR;
+
+        proj.Fire(StartPoint,DestPoint,bIsFacingR );
 
         ++idx_current;
         if(idx_current>=Capacity)

@@ -10,9 +10,10 @@ public interface I_Attack {
 public interface I_TakeDamage
 {
     /*
-    *   Damaged Object : GameObject that taken damage from other
-    *   Damage Causor : GameObject that invoke this function
-    *   Amount : number of damage
+    *   @Parmas
+    *   @Damaged Object : GameObject that taken damage from other
+    *   @Damage Causor : GameObject that invoke this function
+    *   @Amount : number of damage
     */
     public float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount);
 }
