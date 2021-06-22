@@ -39,5 +39,10 @@ sysinfo.txt
 #logFiles
 Logs/
 *.log
-
+.exe0.log
+.exe1.log
+.exe2.log
+.exe3.log
+.exe4.log
+.exe5.log
 
