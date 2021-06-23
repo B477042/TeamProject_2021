@@ -9,7 +9,7 @@ using UnityEngine;
 *   The controller commands the operation and the player(this script) processes it.
 *   Stat and State components is controlled by this for only
 */
-public class GamePlayer : MonoBehaviour, I_Attack
+public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
 {
     //Point gameObject's Animator
     private Animator animator;
@@ -24,7 +24,10 @@ public class GamePlayer : MonoBehaviour, I_Attack
     private Mags mags;
 
     private Vector3 FirePoint=new Vector3(1.74f,0.14f,0);
-
+    private void Awake()
+    {
+             MainGameManager.Instance.Player = gameObject; 
+    }
 
     //==================================================
     // Start is called before the first frame update
@@ -33,7 +36,7 @@ public class GamePlayer : MonoBehaviour, I_Attack
         initializeComponents();
         // if(!MainGameManager.Instance.Player)
         //     MainGameManager.Instance.Player = gameObject;
-
+     
     }
 
     // Update is called once per frame
@@ -124,6 +127,14 @@ public class GamePlayer : MonoBehaviour, I_Attack
         mags.Fire(StartPoint,DestPos);
         
     }
+    //Take Damage form I_TakeDamage
+    public float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount)
+    {
+        print("Player Take Damage : "+Amount);
+        return Amount;
+    }    
+
+
     //========================================================================
     //  private funcs
     //Initialize Components Value

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UTaskNode : MonoBehaviour,I_TreeNode
+public class UServiceNode : UBTNode
 {
     // Start is called before the first frame update
     void Start()
@@ -10,9 +10,8 @@ public class UTaskNode : MonoBehaviour,I_TreeNode
         
     }
 
-    // Update is called once per frame
-    void Update()
+      public new int ExecuteNode()
     {
-        
+        return 0;
     }
 }

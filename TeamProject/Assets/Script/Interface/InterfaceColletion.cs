@@ -24,6 +24,6 @@ public interface I_TakeDamage
 //  AI Script
 public interface I_TreeNode
 {
-    
+    public int ExecuteNode();
 
 }
