@@ -22,7 +22,7 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
     private BoxCollider2D collision;
     //Bullet Manager Component
     private Mags mags;
-
+    private Vector3 prevPoint;
     private Vector3 FirePoint=new Vector3(1.74f,0.14f,0);
     private void Awake()
     {
@@ -36,13 +36,15 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
         initializeComponents();
         // if(!MainGameManager.Instance.Player)
         //     MainGameManager.Instance.Player = gameObject;
-     
+        prevPoint=gameObject.transform.position;
+        stat.OnHpIsZero+=onHpIsZero;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    
+    void FixedUpdate()
     {
-        //checkVelocity();
+        checkVelocity();
     }
     
     //===============================================
@@ -60,6 +62,7 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
            if(other.gameObject.tag=="Landscape")
         {
             setAnimState(EPlayerState.InAir);
+            
         }
     }
 
@@ -69,18 +72,31 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
     {
         state.playerState = NewState;
         animator.SetInteger("State",(int)state.playerState);
-        print("state changed");
+      
     }
-    // private float checkVelocity()
-    // {
-    //     float result = rigid.velocity.magnitude;
-    //     if(result!=0)
-    //         setAnimState(EPlayerState.Walk);
-    //     else
-    //         setAnimState(EPlayerState.OnGround);
+    private float checkVelocity()
+    {
+        print("Test");
+        //If Player's state is InAir return
+        if(state.playerState==EPlayerState.InAir||state.playerState==EPlayerState.Dead )return 0;
 
-    //     return result;
-    // }
+        var displacement=gameObject.transform.position-prevPoint;
+        prevPoint=gameObject.transform.position;
+        float result =  Vector3.Magnitude( displacement);
+        //print("check velocity"+result);
+
+        if(result!=0.0f)
+        {
+            setAnimState(EPlayerState.Walk);
+        }
+        else
+         {
+            setAnimState(EPlayerState.OnGround);
+         }
+
+       
+        return result;
+    }
 
     
     //===============================================
@@ -131,6 +147,7 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
     public float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount)
     {
         print("Player Take Damage : "+Amount);
+        stat.HP-=Amount;
         return Amount;
     }    
 
@@ -157,5 +174,9 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
         mags = gameObject.GetComponent<Mags>();
         if(!mags){print("There isn't Mags");return;}
     }
-
+    //Freeze Rigid body 
+    void onHpIsZero()
+    {
+        rigid.constraints= RigidbodyConstraints2D.FreezeAll;
+    }
 }

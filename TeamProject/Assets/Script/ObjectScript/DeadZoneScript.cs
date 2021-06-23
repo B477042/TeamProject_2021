@@ -18,11 +18,11 @@ public class DeadZoneScript : MonoBehaviour
         if(other.gameObject.tag=="Player")
         {
             
-            other.GetComponent<GamePlayer>().TakeDamage(other.gameObject,gameObject,Mathf.Infinity);
+            other.GetComponent<GamePlayer>().TakeDamage(other.gameObject,gameObject,5000000);
         }
         if(other.gameObject.tag=="Enemy")
         {
-            other.GetComponent<EnemyCharacter>().TakeDamage(other.gameObject,gameObject,Mathf.Infinity);
+            other.GetComponent<EnemyCharacter>().TakeDamage(other.gameObject,gameObject,500000000);
         }
     }
      

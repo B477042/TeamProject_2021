@@ -10,22 +10,27 @@ public class GamePlayerStat : MonoBehaviour
     //=========================================
     //          Stat Variables
     //Default Speed of gameObject
-    [SerializeField]
-    private float speed=65.0f;
+    [SerializeField]private float speed=100.0f;
     //Accelation Factor
-    [SerializeField]
-    private float accelFactor=1.0f;
+    [SerializeField]private float accelFactor=1.0f;
     //Jump value factor
-    [SerializeField]
-    private float jumpFactor=70.0f;
+    [SerializeField]private float jumpFactor=70.0f;
+    private float MaxHP=100.0f;
+    private float hp;
     public float ATK{get;set;}
     public float HP{
+             get{return hp;}
             set 
             {
-                HP=value;
-                OnHpChanged.Invoke(HP);
+                hp=value;
+            
+                //OnHpChanged.Invoke(hp);
+                if(hp<=0)
+                {
+                    OnHpIsZero.Invoke();
+                }
             }
-            get{return HP;}
+           
         }
 
 
@@ -34,19 +39,24 @@ public class GamePlayerStat : MonoBehaviour
     public float GetSpeed(){return speed;}
     public float GetAccelFactor(){return accelFactor;}
     public float GetJumpFactor(){return jumpFactor;}
+    public float GetHPRatio(){return HP/MaxHP;}
     //=========================================
     //          Delegate
-    public delegate void FOnHpChanged(float newValue);
+  
     //Called When Hp is changed
     public FOnHpChanged OnHpChanged;
-
+    public FOnHpIsZero OnHpIsZero;
    
-    
+    private void Awake() 
+    {
+        ATK=10.0f;
+        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        HP=MaxHP;    
     }
     
 
