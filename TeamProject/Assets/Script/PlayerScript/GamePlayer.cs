@@ -24,6 +24,8 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
     private Mags mags;
     private Vector3 prevPoint;
     private Vector3 FirePoint=new Vector3(1.74f,0.14f,0);
+
+    public FOnLanding OnLanding;
     private void Awake()
     {
              MainGameManager.Instance.Player = gameObject; 
@@ -53,6 +55,7 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
         if(other.gameObject.tag=="Landscape")
         {
             setAnimState(EPlayerState.OnGround);
+            OnLanding.Invoke();
         }
 
 
@@ -128,10 +131,13 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
     }
     public void Jump()
     {
-        Vector2 newForce =new Vector2(0.0f,stat.GetJumpFactor());
-        rigid.AddForce(newForce);
-        setAnimState(EPlayerState.InAir);
-        state.bIsInAir=true;
+        if(state.IsCanJump())
+        {
+            Vector2 newForce =new Vector2(0.0f,stat.GetJumpFactor());
+            rigid.AddForce(newForce);
+            setAnimState(EPlayerState.InAir);
+            state.bIsInAir=true;
+        }
     }
     //Attack 
     public void Attack()
