@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class EnemyCharacter : MonoBehaviour
+public class EnemyCharacter : Damageable,I_Attack
 {
     //Receive value from controller
     private Vector3 targetPos;
@@ -22,6 +22,15 @@ public class EnemyCharacter : MonoBehaviour
         
     }
 
+    public void Attack()
+    {
+        
+    }
+    public override float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount)
+    {
+        print("Enemy Take Damage : "+Amount);
+        return Amount;
+    }
 
 
 

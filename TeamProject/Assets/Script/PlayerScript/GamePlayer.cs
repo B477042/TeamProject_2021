@@ -9,7 +9,7 @@ using UnityEngine;
 *   The controller commands the operation and the player(this script) processes it.
 *   Stat and State components is controlled by this for only
 */
-public class GamePlayer : MonoBehaviour, I_Attack
+public class GamePlayer : Damageable, I_Attack
 {
     //Point gameObject's Animator
     private Animator animator;
@@ -22,9 +22,14 @@ public class GamePlayer : MonoBehaviour, I_Attack
     private BoxCollider2D collision;
     //Bullet Manager Component
     private Mags mags;
+    private Vector3 prevPoint;
+[SerializeField]private GameObject FirePoint;
 
-    private Vector3 FirePoint=new Vector3(1.74f,0.14f,0);
-
+    public FOnLanding OnLanding;
+    private void Awake()
+    {
+             MainGameManager.Instance.Player = gameObject; 
+    }
 
     //==================================================
     // Start is called before the first frame update
@@ -33,13 +38,15 @@ public class GamePlayer : MonoBehaviour, I_Attack
         initializeComponents();
         // if(!MainGameManager.Instance.Player)
         //     MainGameManager.Instance.Player = gameObject;
-
+        prevPoint=gameObject.transform.position;
+        stat.OnHpIsZero+=onHpIsZero;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    
+    void FixedUpdate()
     {
-        //checkVelocity();
+        checkVelocity();
     }
     
     //===============================================
@@ -48,6 +55,7 @@ public class GamePlayer : MonoBehaviour, I_Attack
         if(other.gameObject.tag=="Landscape")
         {
             setAnimState(EPlayerState.OnGround);
+            OnLanding.Invoke();
         }
 
 
@@ -57,6 +65,7 @@ public class GamePlayer : MonoBehaviour, I_Attack
            if(other.gameObject.tag=="Landscape")
         {
             setAnimState(EPlayerState.InAir);
+            
         }
     }
 
@@ -66,18 +75,31 @@ public class GamePlayer : MonoBehaviour, I_Attack
     {
         state.playerState = NewState;
         animator.SetInteger("State",(int)state.playerState);
-        print("state changed");
+      
     }
-    // private float checkVelocity()
-    // {
-    //     float result = rigid.velocity.magnitude;
-    //     if(result!=0)
-    //         setAnimState(EPlayerState.Walk);
-    //     else
-    //         setAnimState(EPlayerState.OnGround);
+    private float checkVelocity()
+    {
+      
+        //If Player's state is InAir return
+        if(state.playerState==EPlayerState.InAir||state.playerState==EPlayerState.Dead )return 0;
 
-    //     return result;
-    // }
+        var displacement=gameObject.transform.position-prevPoint;
+        prevPoint=gameObject.transform.position;
+        float result =  Vector3.Magnitude( displacement);
+        //print("check velocity"+result);
+
+        if(result!=0.0f)
+        {
+            setAnimState(EPlayerState.Walk);
+        }
+        else
+         {
+            setAnimState(EPlayerState.OnGround);
+         }
+
+       
+        return result;
+    }
 
     
     //===============================================
@@ -109,21 +131,33 @@ public class GamePlayer : MonoBehaviour, I_Attack
     }
     public void Jump()
     {
-        Vector2 newForce =new Vector2(0.0f,stat.GetJumpFactor());
-        rigid.AddForce(newForce);
-        setAnimState(EPlayerState.InAir);
-        state.bIsInAir=true;
+        if(state.IsCanJump())
+        {
+            Vector2 newForce =new Vector2(0.0f,stat.GetJumpFactor());
+            rigid.AddForce(newForce);
+            setAnimState(EPlayerState.InAir);
+            state.bIsInAir=true;
+        }
     }
     //Attack 
     public void Attack()
     {
         var DestPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 StartPoint = gameObject.transform.position;
+        Vector3 StartPoint = FirePoint.transform.position;
         
         mags.Fire(StartPoint,DestPos);
         
     }
+    //Take Damage form I_TakeDamage
+    public override float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount)
+    {
+        print("Player Take Damage : "+Amount);
+        stat.HP-=Amount;
+        return Amount;
+    }    
+
+
     //========================================================================
     //  private funcs
     //Initialize Components Value
@@ -146,5 +180,9 @@ public class GamePlayer : MonoBehaviour, I_Attack
         mags = gameObject.GetComponent<Mags>();
         if(!mags){print("There isn't Mags");return;}
     }
-
+    //Freeze Rigid body 
+    void onHpIsZero()
+    {
+        rigid.constraints= RigidbodyConstraints2D.FreezeAll;
+    }
 }

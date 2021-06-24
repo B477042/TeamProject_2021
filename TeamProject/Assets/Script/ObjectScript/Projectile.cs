@@ -34,18 +34,16 @@ public class Projectile : MonoBehaviour
 */
     public void Fire(Vector2 StartPoint, Vector2 DestPoint,bool bIsShooterFaceRight)
     {
-        //Local variable. If true, gameObject is facing Right
-        bool bIsFaceRight=true;
+       
         //Calaculate Direction
         direction = DestPoint - StartPoint;
         
         //If Direction is negative number, Turn 180 degrees( scale*-1.0f ).
-         
         if(direction.x<0)
             {
                Vector3 newScale = new Vector3(originScale.x*-1,originScale.y,originScale.z);
                gameObject.transform.localScale=newScale;
-                bIsFaceRight=true;
+                 
             }
         else
             gameObject.transform.localScale=originScale;
@@ -53,23 +51,32 @@ public class Projectile : MonoBehaviour
         //Calaculate Angle between ForwardPoint and DestPoint
         //If Calaculate Angle is over +-90 Degrees. Don't fire
         float sign = 1.0f;
-        if(!bIsFaceRight)
+        if(!bIsShooterFaceRight)
             sign=-1.0f;
         Vector2 forward = new Vector2(1.0f,0.0f)*sign;
         float dotProduct = Vector3.Dot(direction.normalized, forward);
         float Angle = Mathf.Acos(dotProduct)*Mathf.Rad2Deg;
-
-        //If abs Angle is over 90 return
-        if(Angle>90)
-            return;
-        //If direction.y is negative number, degrees also be negative number
-        if(direction.y <0)
-            {
-                //print("Direction Y is "+direction.y);
-                Angle*=-1;
-            }
         
-
+        //If abs Angle is over 90 return
+        if(Angle>=90.0f)
+        {
+            print("Dont shoot Angle "+ Angle);
+            bIsActivated=false;
+            setHide(true);
+            return;
+        }
+        //If direction.y is negative number, degrees also be negative number
+        if(direction.x <0)
+        {
+            //print("Direction Y is "+direction.y);
+            Angle *=-1;
+        }
+        if(direction.y<0)
+        {
+            Angle *=-1;
+        }
+        
+        print("Angle "+ Angle);
 
 
        // print("Angle is "+Angle+" vec A = "+direction+" forward "+forward + " Dot "+dotProduct);
@@ -80,9 +87,9 @@ public class Projectile : MonoBehaviour
         bIsActivated=true;
       
         //Show Game Object in Viewport
-        ToggleHide(false);
+        setHide(false);
     }
-    public void ToggleHide(bool bResult)
+    private void setHide(bool bResult)
     {
         if(!bResult)
         {
@@ -92,16 +99,22 @@ public class Projectile : MonoBehaviour
         {
             gameObject.SetActive(false);
             gameObject.transform.localScale = originScale;
-            damage++;
+           
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         VFX_Hit.Play();
         
+        if(other.gameObject.tag!="Untagged")setHide(true);
+
+        var damageable = other.gameObject.GetComponent<Damageable>();
+        if(!damageable)return;
+
+        damageable.TakeDamage(other.gameObject,gameObject,damage);
         
     }
-    
+   
 
 
 }
