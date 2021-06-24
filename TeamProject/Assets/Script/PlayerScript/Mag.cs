@@ -12,7 +12,7 @@ public class Mag : MonoBehaviour
 
     private List<GameObject> list_Bullets=new List<GameObject>();
     private ushort idx_current=0;
-    private bool bCanUse=true;
+    
     private float delay= 0.3f;
     //
 
@@ -45,7 +45,7 @@ public class Mag : MonoBehaviour
         var forwardVector = gameObject.transform.position+gameObject.transform.forward;
         var bIsFacingR = gameObject.GetComponent<GamePlayerState>().bIsFacingR;
 
-        proj.Fire(StartPoint,DestPoint,bIsFacingR );
+        proj.Fire(StartPoint,DestPoint,bIsFacingR,gameObject.tag );
 
         ++idx_current;
         if(idx_current>=Capacity)

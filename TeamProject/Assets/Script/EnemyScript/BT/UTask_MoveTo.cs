@@ -22,7 +22,7 @@ public class UTask_MoveTo : UBTNode
 
      if(dircetion.x<=minDist)return true;
 
-      AIController.MoveTo(dircetion/10);
+      AIController.MoveTo(dircetion*10);
 
     
       return false;

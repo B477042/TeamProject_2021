@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemyCharacter : Damageable,I_Attack
 {
-
+    [SerializeField]private  Animator animator;
     Rigidbody2D rigid;
     EnemyState state;
     //=================================================    
@@ -30,6 +30,7 @@ public class EnemyCharacter : Damageable,I_Attack
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
         state = gameObject.GetComponent<EnemyState>();
+        animator = gameObject.GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,7 @@ public class EnemyCharacter : Damageable,I_Attack
 
     public void Attack()
     {
-        
+        print("WaBara");
     }
     public override float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount)
     {
@@ -75,5 +76,16 @@ public class EnemyCharacter : Damageable,I_Attack
         state.State=EEnemyState.Walk;
         rigid.AddForce(Dircetion);
     } 
+
+
+    //===============================================
+    //      Animator Funtions
+    private void setAnimState(EEnemyState NewState) 
+    {
+        state.State = NewState;
+        animator.SetInteger("State",(int)state.State);
+      
+    }
+
 
 }

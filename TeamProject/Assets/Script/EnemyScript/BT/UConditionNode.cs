@@ -30,8 +30,6 @@ public class UConditionNode : UBTNode
             dataType=DataType;
             conditionName=ConditionName;
 
-
-
             break;
              
         }
@@ -40,47 +38,51 @@ public class UConditionNode : UBTNode
     {
         bool bResult=false;
         var blackBoard = AIController.BlackBoard;
-        var dicValue = blackBoard.DataDic[conditionName];
-        //If BlackBoard dont has key value return false
-        if(!blackBoard.DataDic.ContainsKey(conditionName))
-        {
-            print("condition error");
-            return bResult;
-        }
 
-        //Check Condition
-        switch(condition)
-        {
-            //If Dic Value is null return false
-            case ECondition.set:
-           
-            if(dicValue==null)
-            {
-                return bResult;
-            }
-
-            break;
-            //If Dic Value is not null return false
-            case ECondition.notSet:
-
-            
-            if(dicValue!=null)
-            {
-                return bResult;
-            }
-
-            break;
-        }
         
 
-        //Execute child nodes
-         foreach(var node in childNodes)
-        {
-            bResult = node.ExecuteNode(AIController);
-            if(!bResult)
-                return false;
-        }
+        //var dicValue = blackBoard.DataDic[conditionName];
+        // //If BlackBoard dont has key value return false
+        // if(!blackBoard.DataDic.ContainsKey(conditionName))
+        // {
+        //     print("condition error");
+        //     return bResult;
+        // }
 
+        // //Check Condition
+        // switch(condition)
+        // {
+        //     //If Dic Value is null return false
+        //     case ECondition.set:
+           
+        //     if(dicValue==null)
+        //     {
+        //         return bResult;
+        //     }
+
+        //     break;
+        //     //If Dic Value is not null return false
+        //     case ECondition.notSet:
+
+            
+        //     if(dicValue!=null)
+        //     {
+        //         return bResult;
+        //     }
+
+        //     break;
+        // }
+        
+        if(blackBoard.TargetObject==null)
+        {
+            //Execute child nodes
+            foreach(var node in childNodes)
+            {
+                bResult = node.ExecuteNode(AIController);
+                if(!bResult)
+                  return false;
+            }
+        }
 
 
         return true;

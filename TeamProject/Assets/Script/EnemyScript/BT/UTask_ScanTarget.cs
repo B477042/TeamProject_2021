@@ -15,7 +15,8 @@ public class UTask_ScanTarget : UBTNode
             //Successed for scan player
             if(index.gameObject.tag=="Player")
             {
-                blackBoard.TargetObject=index.gameObject;
+                print("find");
+                AIController.BlackBoard.TargetObject=index.gameObject;
                 return false;
             }
         }

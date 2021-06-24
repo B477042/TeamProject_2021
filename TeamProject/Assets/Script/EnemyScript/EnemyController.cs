@@ -19,7 +19,7 @@ public struct FBlackBoard
         set
         {
             targetObject=value;
-            DataDic[GAMEOBJECT]=targetObject;
+            //DataDic[GAMEOBJECT]=targetObject;
         }
     }
 
@@ -42,18 +42,21 @@ public class EnemyController : MonoBehaviour
 {
     private EnemyCharacter character;
     
-    private BehaviorTree behaviorTree;
+    [SerializeField]private BehaviorTree behaviorTree;
     //======================================
     //      Used As BalckBoard For BT
     //      Variables
     public FBlackBoard BlackBoard;
     
-
+    private void Awake()
+    {
+        BlackBoard.init();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        BlackBoard.init();
+        
         behaviorTree = gameObject.GetComponent< BehaviorTree>();
         if(!behaviorTree)
         {

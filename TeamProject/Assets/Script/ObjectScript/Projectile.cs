@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
     @StartPoint : Mag component's GameObject position
     @DestPoint : The point where mouse clicked
 */
-    public void Fire(Vector2 StartPoint, Vector2 DestPoint,bool bIsShooterFaceRight)
+    public void Fire(Vector2 StartPoint, Vector2 DestPoint,bool bIsShooterFaceRight,string newTag)
     {
        
         //Calaculate Direction
@@ -76,7 +76,7 @@ public class Projectile : MonoBehaviour
             Angle *=-1;
         }
         
-        print("Angle "+ Angle);
+        //print("Angle "+ Angle);
 
 
        // print("Angle is "+Angle+" vec A = "+direction+" forward "+forward + " Dot "+dotProduct);
@@ -88,6 +88,10 @@ public class Projectile : MonoBehaviour
       
         //Show Game Object in Viewport
         setHide(false);
+        //Change Tag
+        gameObject.tag=newTag;
+
+
     }
     private void setHide(bool bResult)
     {

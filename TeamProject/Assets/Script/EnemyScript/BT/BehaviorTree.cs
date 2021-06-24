@@ -64,6 +64,7 @@ public class BehaviorTree  : MonoBehaviour
         node3.AddChildNode(node7);
         node3.AddChildNode(node8);
 
+        node1.SetCondition(controller.BlackBoard,"GameObject","GameObject",ECondition.notSet);
 
 
     }
