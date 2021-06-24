@@ -29,10 +29,11 @@ public abstract class UBTNode : MonoBehaviour,I_TreeNode
         if(!newChild)return false;
 
         childNodes.Add(newChild);
+        newChild.addParentNode(this);
         return true;
     }
 
-    public bool AddParentNode(UBTNode newParent)
+    private bool addParentNode(UBTNode newParent)
     {
         //parent cant change
         if(parentNode)return false;
