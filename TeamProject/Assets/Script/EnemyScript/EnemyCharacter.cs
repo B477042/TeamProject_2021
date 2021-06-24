@@ -9,6 +9,7 @@ public class EnemyCharacter : Damageable,I_Attack
     [SerializeField]private  Animator animator;
     Rigidbody2D rigid;
     EnemyState state;
+    float speed =90.0f;
     //=================================================    
     //Receive value from controller
     private Vector3 targetPos;
@@ -46,6 +47,7 @@ public class EnemyCharacter : Damageable,I_Attack
 
     public void Attack()
     {
+        setAnimState(EEnemyState.Attack);
         print("WaBara");
     }
     public override float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount)
@@ -74,7 +76,7 @@ public class EnemyCharacter : Damageable,I_Attack
     public void MoveTo(Vector2 Dircetion)
     {
         state.State=EEnemyState.Walk;
-        rigid.AddForce(Dircetion);
+         gameObject.transform.position+=(Vector3)Dircetion*2f;
     } 
 
 
@@ -87,5 +89,17 @@ public class EnemyCharacter : Damageable,I_Attack
       
     }
 
-
+    //===============================================
+    //      anim event func
+    void OnAttackEnd()
+    {
+        var controller = GetComponent<EnemyController>();
+        controller.SetBTPower(true);
+        setAnimState(EEnemyState.Idle);
+    }
+    void OnAttackStart()
+    {
+         var controller = GetComponent<EnemyController>();
+        controller.SetBTPower(false);
+    }
 }

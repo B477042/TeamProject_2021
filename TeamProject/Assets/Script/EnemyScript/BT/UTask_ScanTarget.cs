@@ -7,6 +7,7 @@ public class UTask_ScanTarget : UBTNode
     private float radius=7.5f;
     public override bool ExecuteNode(EnemyController AIController)
     {
+        AIController.currentNode=this;
         var blackBoard = AIController.BlackBoard;
         var currentPos=AIController.gameObject.transform.position;
         var result =Physics2D.OverlapCircleAll(currentPos,radius);

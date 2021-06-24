@@ -24,11 +24,13 @@ public class GamePlayer : Damageable, I_Attack
     private Mag mag;
     private Vector3 prevPoint;
 [SerializeField]private GameObject FirePoint;
+[SerializeField]private AudioSource GunShot;
 
     public FOnLanding OnLanding;
     private void Awake()
     {
              MainGameManager.Instance.Player = gameObject; 
+             GunShot=gameObject.GetComponent<AudioSource>();
     }
 
     //==================================================
@@ -150,8 +152,8 @@ public class GamePlayer : Damageable, I_Attack
 
         Vector3 StartPoint = FirePoint.transform.position;
         
-        mag.Fire(StartPoint,DestPos);
-        
+        if(mag.Fire(StartPoint,DestPos))
+            GunShot.Play();
     }
     //Take Damage form I_TakeDamage
     public override float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount)
@@ -194,4 +196,6 @@ public class GamePlayer : Damageable, I_Attack
          print("Double Jump");
         setAnimState(EPlayerState.DoubleJump);
     }
+
+
 }

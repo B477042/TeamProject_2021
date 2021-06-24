@@ -6,7 +6,9 @@ public class BehaviorTree  : MonoBehaviour
 {
     private EnemyController controller;
     private UBTNode rootNode;
-    private bool bPower=true;
+    
+    [SerializeField] private bool bPower=true;
+    public bool Power{get{return bPower;}set{bPower=value;}}
     // Start is called before the first frame update
     void Start()
     {

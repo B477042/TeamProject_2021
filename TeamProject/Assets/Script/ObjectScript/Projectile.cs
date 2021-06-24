@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
     @StartPoint : Mag component's GameObject position
     @DestPoint : The point where mouse clicked
 */
-    public void Fire(Vector2 StartPoint, Vector2 DestPoint,bool bIsShooterFaceRight,string newTag)
+    public bool Fire(Vector2 StartPoint, Vector2 DestPoint,bool bIsShooterFaceRight,string newTag)
     {
        
         //Calaculate Direction
@@ -60,10 +60,10 @@ public class Projectile : MonoBehaviour
         //If abs Angle is over 90 return
         if(Angle>=90.0f)
         {
-            print("Dont shoot Angle "+ Angle);
+            //print("Dont shoot Angle "+ Angle);
             bIsActivated=false;
             setHide(true);
-            return;
+            return false;
         }
         //If direction.y is negative number, degrees also be negative number
         if(direction.x <0)
@@ -91,7 +91,8 @@ public class Projectile : MonoBehaviour
         //Change Tag
         gameObject.tag=newTag;
 
-
+        return true;
+        
     }
     private void setHide(bool bResult)
     {

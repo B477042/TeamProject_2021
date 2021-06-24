@@ -39,7 +39,6 @@ public class UConditionNode : UBTNode
         bool bResult=false;
         var blackBoard = AIController.BlackBoard;
 
-        
 
         //var dicValue = blackBoard.DataDic[conditionName];
         // //If BlackBoard dont has key value return false
@@ -78,11 +77,16 @@ public class UConditionNode : UBTNode
             //Execute child nodes
             foreach(var node in childNodes)
             {
+                
+                AIController.currentNode=node;
                 bResult = node.ExecuteNode(AIController);
                 if(!bResult)
                   return false;
             }
         }
+        
+        if(blackBoard.TargetObject!=null)
+        return false;
 
 
         return true;

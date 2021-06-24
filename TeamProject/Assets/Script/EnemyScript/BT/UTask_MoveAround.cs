@@ -13,7 +13,7 @@ public class UTask_MoveAround : UBTNode
     {
       float x = Random.Range(offsetA,offsetB);
       float y = Random.Range(offsetX,offsetY);
-
+      AIController.currentNode=this;
       Vector2 newDest = new Vector2(x,y);
 
       AIController.MoveTo(newDest);

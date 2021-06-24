@@ -36,8 +36,9 @@ public class Mag : MonoBehaviour
     *   StartPoint : GameObject position
     *   DestPoint : Mouse-click coordinates
     */
-    public void Fire(Vector2 StartPoint, Vector2 DestPoint)
+    public bool Fire(Vector2 StartPoint, Vector2 DestPoint)
     {
+        bool bResult=true;
         var bullet = list_Bullets[idx_current];
 
         bullet.transform.position = StartPoint;
@@ -45,13 +46,15 @@ public class Mag : MonoBehaviour
         var forwardVector = gameObject.transform.position+gameObject.transform.forward;
         var bIsFacingR = gameObject.GetComponent<GamePlayerState>().bIsFacingR;
 
-        proj.Fire(StartPoint,DestPoint,bIsFacingR,gameObject.tag );
+        bResult =proj.Fire(StartPoint,DestPoint,bIsFacingR,gameObject.tag );
 
         ++idx_current;
         if(idx_current>=Capacity)
             idx_current=0;
 
         delay++;
+
+        return bResult;
     }
 
     

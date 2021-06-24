@@ -10,7 +10,7 @@ public class UTask_Attack : UBTNode
    {
        AIController.Attack();
        
-
+    AIController.currentNode=this;
        return true;
 
    }

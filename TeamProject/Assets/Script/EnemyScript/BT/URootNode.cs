@@ -8,6 +8,7 @@ public class URootNode : UBTNode
     {
         foreach(var node in childNodes)
         {
+            AIController.currentNode=node;
             node.ExecuteNode(AIController);
         }
     

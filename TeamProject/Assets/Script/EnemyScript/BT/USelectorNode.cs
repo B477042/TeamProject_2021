@@ -18,6 +18,7 @@ public class USelectorNode : UBTNode
 
         foreach(var node in childNodes)
         {
+            AIController.currentNode=node;
             bResult=node.ExecuteNode(AIController);
             if(bResult)return true;
         }

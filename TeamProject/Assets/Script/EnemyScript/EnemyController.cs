@@ -43,6 +43,7 @@ public class EnemyController : MonoBehaviour
     private EnemyCharacter character;
     
     [SerializeField]private BehaviorTree behaviorTree;
+    public UBTNode currentNode=null;
     //======================================
     //      Used As BalckBoard For BT
     //      Variables
@@ -80,6 +81,10 @@ public class EnemyController : MonoBehaviour
         character.Attack();
     }
 
-
+    //if true turn on
+    public void SetBTPower(bool bResult)
+    {
+        behaviorTree.Power=bResult;
+    }
 
 }
