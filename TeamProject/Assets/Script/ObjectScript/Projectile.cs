@@ -34,8 +34,7 @@ public class Projectile : MonoBehaviour
 */
     public void Fire(Vector2 StartPoint, Vector2 DestPoint,bool bIsShooterFaceRight)
     {
-        //Local variable. If true, gameObject(bullet) is facing Right
-        bool bIsBulletFaceRight=true;
+       
         //Calaculate Direction
         direction = DestPoint - StartPoint;
         
@@ -44,7 +43,7 @@ public class Projectile : MonoBehaviour
             {
                Vector3 newScale = new Vector3(originScale.x*-1,originScale.y,originScale.z);
                gameObject.transform.localScale=newScale;
-                bIsBulletFaceRight=false;
+                 
             }
         else
             gameObject.transform.localScale=originScale;
@@ -108,7 +107,7 @@ public class Projectile : MonoBehaviour
         VFX_Hit.Play();
         
         if(other.gameObject.tag!="Untagged")setHide(true);
-        
+
         var damageable = other.gameObject.GetComponent<Damageable>();
         if(!damageable)return;
 

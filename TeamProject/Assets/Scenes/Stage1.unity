@@ -1105,6 +1105,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3733252148578968144, guid: f2ba4a2fecca53f45848fadfbb263ce5, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3733252148578968157, guid: f2ba4a2fecca53f45848fadfbb263ce5, type: 3}
       propertyPath: m_Name
       value: ground (3)
@@ -2190,7 +2194,7 @@ GameObject:
   - component: {fileID: 1312108231}
   m_Layer: 0
   m_Name: Quad (6)
-  m_TagString: Untagged
+  m_TagString: Landscape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
