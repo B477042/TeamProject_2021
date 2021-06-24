@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     public ParticleSystem VFX_Hit;
     private bool bIsActivated=false;
     private Vector2 direction;
-    private float speed=0.01f;
+    private float speed=0.1f;
     private Vector3 originScale;
 
     // Start is called before the first frame update

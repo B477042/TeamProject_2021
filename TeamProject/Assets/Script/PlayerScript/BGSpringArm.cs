@@ -28,7 +28,7 @@ private void Awake() {
     Pos_LeftTop=new Vector2(-6.4f,36);
     Pos_RightDown=new Vector2(250,-6);
     Pos_BG_LeftTop=new Vector2(29.5f,10f);
-    Pos_BG_RightDown=new Vector2(224.6f,10f);
+    Pos_BG_RightDown=new Vector2(234.6f,10f);
 
 }
     // Start is called before the first frame update

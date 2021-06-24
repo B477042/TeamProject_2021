@@ -10,11 +10,11 @@ public class GamePlayerStat : MonoBehaviour
     //=========================================
     //          Stat Variables
     //Default Speed of gameObject
-    [SerializeField]private float speed=100.0f;
+    private float speed=120.0f;
     //Accelation Factor
-    [SerializeField]private float accelFactor=1.0f;
+    private float accelFactor=2f;
     //Jump value factor
-    [SerializeField]private float jumpFactor=70.0f;
+    private float jumpFactor=700.0f;
     private float MaxHP=100.0f;
     private float hp;
     public float ATK{get;set;}
