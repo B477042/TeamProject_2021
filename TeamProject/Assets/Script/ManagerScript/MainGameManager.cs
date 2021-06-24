@@ -15,7 +15,7 @@ public class MainGameManager : MonoBehaviour
 {
     //=============================
     //Game Information
-    private float playeScore=0.0f;
+    private float playerScore=0.0f;
     //The name of Current Scene. 
     private string currentScene;
     public GameObject Player;
@@ -52,9 +52,10 @@ public class MainGameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public float AddScore(float NewScore)
     {
-        
+        playerScore+=NewScore;
+        return playerScore;
     }
+   
 }

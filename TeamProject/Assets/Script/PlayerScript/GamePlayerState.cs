@@ -9,7 +9,8 @@ using UnityEngine;
         InAir=2,
         Attack=3,
         Walk=4,
-        Dead
+        Dead=5,
+        DoubleJump=6
          
     };
 
@@ -34,6 +35,8 @@ public class GamePlayerState : MonoBehaviour
     public bool bIsDead=false;
     public bool bIsInAir=false;
     private EPlayerJumpState jumpState=EPlayerJumpState.OnGround;
+    public FOnDoubleJump OnDoubleJump;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +59,8 @@ public class GamePlayerState : MonoBehaviour
     {
         jumpState=EPlayerJumpState.OnGround;
     }
-    //Return true if can jump
+    //Return true if can jump. and Change State. 
+    //Because if player can jump on the game, that means player' state is changed
     public bool IsCanJump()
     {
     
@@ -69,6 +73,8 @@ public class GamePlayerState : MonoBehaviour
 
             case EPlayerJumpState.Jump:
             jumpState++;
+            OnDoubleJump.Invoke();
+           
             return true;
              
 

@@ -7,3 +7,4 @@ public delegate void FOnHpChanged(float newValue);
 //Called when Hp is zero
 public delegate void FOnHpIsZero();
 public delegate void FOnLanding();
+public delegate void FOnDoubleJump();

@@ -108,6 +108,8 @@ public class Projectile : MonoBehaviour
         
         if(other.gameObject.tag!="Untagged")setHide(true);
 
+        if(other.gameObject.tag=="Player")return;
+
         var damageable = other.gameObject.GetComponent<Damageable>();
         if(!damageable)return;
 

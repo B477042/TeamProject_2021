@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mags : MonoBehaviour
+public class Mag : MonoBehaviour
 {
     //Capacity of this mag
     [SerializeField] private ushort Capacity=6;

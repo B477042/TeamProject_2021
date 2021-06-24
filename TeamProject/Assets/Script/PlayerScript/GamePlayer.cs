@@ -21,7 +21,7 @@ public class GamePlayer : Damageable, I_Attack
     private GamePlayerState state;
     private BoxCollider2D collision;
     //Bullet Manager Component
-    private Mags mags;
+    private Mag mag;
     private Vector3 prevPoint;
 [SerializeField]private GameObject FirePoint;
 
@@ -39,7 +39,11 @@ public class GamePlayer : Damageable, I_Attack
         // if(!MainGameManager.Instance.Player)
         //     MainGameManager.Instance.Player = gameObject;
         prevPoint=gameObject.transform.position;
+
+        //Regist Delegates
         stat.OnHpIsZero+=onHpIsZero;
+        state.OnDoubleJump+=onDoubleJump;
+
     }
 
 
@@ -81,7 +85,7 @@ public class GamePlayer : Damageable, I_Attack
     {
       
         //If Player's state is InAir return
-        if(state.playerState==EPlayerState.InAir||state.playerState==EPlayerState.Dead )return 0;
+        if(state.playerState==EPlayerState.InAir||state.playerState==EPlayerState.Dead ||state.playerState==EPlayerState.DoubleJump)return 0;
 
         var displacement=gameObject.transform.position-prevPoint;
         prevPoint=gameObject.transform.position;
@@ -146,7 +150,7 @@ public class GamePlayer : Damageable, I_Attack
 
         Vector3 StartPoint = FirePoint.transform.position;
         
-        mags.Fire(StartPoint,DestPos);
+        mag.Fire(StartPoint,DestPos);
         
     }
     //Take Damage form I_TakeDamage
@@ -177,12 +181,17 @@ public class GamePlayer : Damageable, I_Attack
 
         collision = gameObject.GetComponent<BoxCollider2D>();
         if(!collision){print("There isn't BoxCollider2D");return;}
-        mags = gameObject.GetComponent<Mags>();
-        if(!mags){print("There isn't Mags");return;}
+        mag = gameObject.GetComponent<Mag>();
+        if(!mag){print("There isn't mag");return;}
     }
     //Freeze Rigid body 
     void onHpIsZero()
     {
         rigid.constraints= RigidbodyConstraints2D.FreezeAll;
+    }
+    void onDoubleJump()
+    {
+         print("Double Jump");
+        setAnimState(EPlayerState.DoubleJump);
     }
 }

@@ -10,9 +10,18 @@ public class BehaviorTree : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+
+    //==================================================
+    //      Building Tree Functions
+
+    //Attach Child node to Parent node
+    //If Success, return true
+    private bool addNode(UBTNode Parent, UBTNode Child)
     {
+
         
+        return true;
     }
+
+   
 }

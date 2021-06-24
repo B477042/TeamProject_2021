@@ -10,7 +10,7 @@ using UnityEngine;
 *   Calculates the ratio between the position of the player and the two end points of the level
 *   This component is attached to BG Texture.
 */
-public class BGSprintArm : MonoBehaviour
+public class BGSpringArm : MonoBehaviour
 {
     //LeftTop point the player can go to  -6.4,15
     private Vector2 Pos_LeftTop ;

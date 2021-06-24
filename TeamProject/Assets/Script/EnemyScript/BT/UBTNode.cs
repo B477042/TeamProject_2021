@@ -2,18 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UBTNode : MonoBehaviour,I_TreeNode
+/*
+    Basic Node For My Behavior Tree
+    It can't be placed but child class nodes can place at Behavior Tree
+    
+
+*/
+public abstract class UBTNode : MonoBehaviour,I_TreeNode
 {
-    // Start is called before the first frame update
-    void Start()
+    private UBTNode parentNode=null;
+    private List<UBTNode> childNodes=new List<UBTNode>();
+    private bool bIsRootNode=false; 
+    public bool IsRootNode()
     {
-        
+        return bIsRootNode;
     }
 
-   
-    public int ExecuteNode()
+
+    //===============================
+    //      Build Tree Func
+    public bool AddChildNode(UBTNode newChild)
     {
-        print("Default Node Executed" );
-        return 0;
+        if(!newChild)return false;
+
+        childNodes.Add(newChild);
+        return true;
     }
+
+    public bool AddParentNode(UBTNode newParent)
+    {
+        //parent cant change
+        if(parentNode)return false;
+
+
+        parentNode=newParent;
+        return true;
+    }
+
+
+    //================================
+    //      Abstract Func
+    public abstract int ExecuteNode();
+
+
+   
 }

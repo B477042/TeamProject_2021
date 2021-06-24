@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Capacity: 6
-  obj_Bullet: {fileID: 458961354482748524, guid: e40f3bd0abc992e439aa52b9aa6932eb, type: 3}
+  obj_Bullet: {fileID: 458961354482748524, guid: f0b8881dc6671704ebf4972e93894d27, type: 3}
 --- !u!1 &7747927585924953791
 GameObject:
   m_ObjectHideFlags: 0
