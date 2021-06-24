@@ -15,7 +15,8 @@ public class StartMenu : MonoBehaviour
 
     private void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        
+         UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     private void ExitGame()

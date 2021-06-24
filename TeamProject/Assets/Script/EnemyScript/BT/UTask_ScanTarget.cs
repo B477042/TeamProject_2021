@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UTask_ScanTarget : UBTNode
+{
+    private float radius=7.5f;
+    public override bool ExecuteNode(EnemyController AIController)
+    {
+        var blackBoard = AIController.BlackBoard;
+        var currentPos=AIController.gameObject.transform.position;
+        var result =Physics2D.OverlapCircleAll(currentPos,radius);
+        foreach(var index in result)
+        {
+            //Successed for scan player
+            if(index.gameObject.tag=="Player")
+            {
+                blackBoard.TargetObject=index.gameObject;
+                return false;
+            }
+        }
+
+      
+      return true;
+    }
+}

@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UTaskNode : UBTNode
+public class UTask_MoveAround : UBTNode
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     public override bool ExecuteNode(EnemyController AIController)
     {
+      float x = Random.Range(-1,1);
+      float y = Random.Range(-1,1);
       
-      print("TaskNode");
       return true;
     }
 }

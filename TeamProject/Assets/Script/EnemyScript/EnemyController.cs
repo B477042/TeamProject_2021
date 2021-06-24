@@ -3,7 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public struct FBlackBoard
+{
+    private const string  GAMEOBJECT="GameObject";
 
+
+    private GameObject targetObject;
+
+    public GameObject TargetObject
+    {
+        get
+        {
+            return targetObject;
+        }
+        set
+        {
+            targetObject=value;
+            DataDic[GAMEOBJECT]=targetObject;
+        }
+    }
+
+    public Dictionary<string,Object> DataDic;
+
+    public void init()
+    {
+        DataDic=new Dictionary<string, Object>();
+        targetObject=null;
+
+    }
+}
 
 /*
 * A Controller Component. Order to enemy character script or move gaemObject(Owner)
@@ -12,27 +40,42 @@ using UnityEngine.AI;
 */
 public class EnemyController : MonoBehaviour
 {
-    private EnemyCharacter owingCharacter;
-    public GameObject TargetObject{get;set;}
+    private EnemyCharacter character;
+    
     private BehaviorTree behaviorTree;
     //======================================
     //      Used As BalckBoard For BT
     //      Variables
+    public FBlackBoard BlackBoard;
     
 
 
     // Start is called before the first frame update
     void Start()
     {
-      owingCharacter= gameObject.GetComponent<EnemyCharacter>();
-        if(!owingCharacter)
+        BlackBoard.init();
+        behaviorTree = gameObject.GetComponent< BehaviorTree>();
+        if(!behaviorTree)
+        {
+            print("Error, can't find BT");
+            
+        }
+        character= gameObject.GetComponent<EnemyCharacter>();
+        if(!character)
         {
             print(gameObject.name+"doesn't has EnemyCharacter.cs");
             Destroy(gameObject);
         }
 
     }
-
+    public void MoveTo(Vector2 Direction)
+    {
+        character.MoveTo(Direction);
+    }
+    public void Attack()
+    {
+        character.Attack();
+    }
 
 
 

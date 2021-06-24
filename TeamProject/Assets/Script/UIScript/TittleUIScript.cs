@@ -38,7 +38,7 @@ public class TittleUIScript : MonoBehaviour
 
     public void OnStartButton()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Stage1");
     }
 
     //Play Button Click Sound

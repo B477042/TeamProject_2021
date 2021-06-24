@@ -10,9 +10,12 @@ using UnityEngine;
 */
 public abstract class UBTNode : MonoBehaviour,I_TreeNode
 {
-    private UBTNode parentNode=null;
-    private List<UBTNode> childNodes=new List<UBTNode>();
-    private bool bIsRootNode=false; 
+    protected UBTNode parentNode=null;
+    protected List<UBTNode> childNodes=new List<UBTNode>();
+    protected List<UBTNode> conditionNodes=new List<UBTNode>();
+    public List<UBTNode>ChildNodes()=>childNodes;
+
+    protected bool bIsRootNode=false; 
     public bool IsRootNode()
     {
         return bIsRootNode;
@@ -33,16 +36,16 @@ public abstract class UBTNode : MonoBehaviour,I_TreeNode
     {
         //parent cant change
         if(parentNode)return false;
-
-
         parentNode=newParent;
         return true;
     }
+    
+
 
 
     //================================
     //      Abstract Func
-    public abstract int ExecuteNode();
+    public abstract bool ExecuteNode(EnemyController AIController);
 
 
    
