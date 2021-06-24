@@ -13,8 +13,16 @@ using UnityEngine;
 
 public class MainGameManager : MonoBehaviour
 {
-    private static  MainGameManager  instance = null;
-    public static  MainGameManager  Instance
+    //=============================
+    //Game Information
+    private float playeScore=0.0f;
+    //The name of Current Scene. 
+    private string currentScene;
+    public GameObject Player;
+
+
+    private static MainGameManager instance = null;
+    public static MainGameManager Instance
     {
         get
         {
@@ -35,9 +43,12 @@ public class MainGameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+
+
     // Start is called before the first frame update
     void Start()
     {
+
 
     }
 
