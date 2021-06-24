@@ -9,7 +9,7 @@ using UnityEngine;
 *   The controller commands the operation and the player(this script) processes it.
 *   Stat and State components is controlled by this for only
 */
-public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
+public class GamePlayer : Damageable, I_Attack
 {
     //Point gameObject's Animator
     private Animator animator;
@@ -23,7 +23,7 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
     //Bullet Manager Component
     private Mags mags;
     private Vector3 prevPoint;
-    private Vector3 FirePoint=new Vector3(1.74f,0.14f,0);
+[SerializeField]private GameObject FirePoint;
 
     public FOnLanding OnLanding;
     private void Awake()
@@ -79,7 +79,7 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
     }
     private float checkVelocity()
     {
-        print("Test");
+      
         //If Player's state is InAir return
         if(state.playerState==EPlayerState.InAir||state.playerState==EPlayerState.Dead )return 0;
 
@@ -144,13 +144,13 @@ public class GamePlayer : MonoBehaviour, I_Attack, I_TakeDamage
     {
         var DestPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 StartPoint = gameObject.transform.position;
+        Vector3 StartPoint = FirePoint.transform.position;
         
         mags.Fire(StartPoint,DestPos);
         
     }
     //Take Damage form I_TakeDamage
-    public float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount)
+    public override float TakeDamage(GameObject DamagedObject, GameObject DamageCausor, float Amount)
     {
         print("Player Take Damage : "+Amount);
         stat.HP-=Amount;

@@ -3278,15 +3278,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5510998370611683167, guid: 27152e8226f32a6458e40a78b3935c0f, type: 3}
       propertyPath: speed
-      value: 120
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5510998370611683167, guid: 27152e8226f32a6458e40a78b3935c0f, type: 3}
       propertyPath: accelFactor
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7747927585717360064, guid: 27152e8226f32a6458e40a78b3935c0f, type: 3}
       propertyPath: m_Mass
-      value: 1.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7747927585717360074, guid: 27152e8226f32a6458e40a78b3935c0f, type: 3}
       propertyPath: m_Name
@@ -3441,7 +3441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6738149181504754823, guid: d91557fec4930f340982f4420bfbda04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.55
+      value: 6.07
       objectReference: {fileID: 0}
     - target: {fileID: 6738149181504754823, guid: d91557fec4930f340982f4420bfbda04, type: 3}
       propertyPath: m_LocalPosition.z
