@@ -3,8 +3,8 @@
  
  ## Summary
  - Genre 
-  - 2D Horror Shooting
+   - 2D Horror Shooting
  - Develop Environment
-  - Unity
-  - C#
+   - Unity
+   - C#
  - 
