@@ -10,8 +10,8 @@
 - Platform : PC (Windows)
 
  - Target Audiunce
-  - Someone who wants to play a horror game. But Doesn't Like Cruel.
-  - Age : 12 ~ Male or Female
+   - Someone who wants to play a horror game. But Doesn't Like Cruel.
+   - Age : 12 ~ Male or Female
 
 
  - Develop Environment
