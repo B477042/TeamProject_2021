@@ -20,12 +20,12 @@
 
 
  - Participants
-  - Young Wook Choi : Main Programmer( Player, Enemy, GamePlay) from South Korea
-  - Zheng Jun : Sub Programmer(Ui) from China
+   - Young Wook Choi : Main Programmer( Player, Enemy, GamePlay) from South Korea
+   - Zheng Jun : Sub Programmer(Ui) from China
 
 
 - Assets
- - Using Free Asstes on Unity Store and other website(https://itch.io/game-assets/free/tag-2d/tag-sprites)
+  - Using Free Asstes on Unity Store and other website(https://itch.io/game-assets/free/tag-2d/tag-sprites)
 
 ## Theme and Setting
 The Escape from Ruins is a 2D Shooting Game. We were inspited of some game devloped by china but I can't remember that game's tittle.
