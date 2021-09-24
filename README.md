@@ -35,6 +35,17 @@ The Player who the longest surviver from this game will be ranked the Top Player
 
 ## Progress
 It's very hard to communicate each other. As you see on the Overview someone from S.Korea and someone from China. We are not using same language between korean and chinese.
-But fortunatly Zheng jun can understand korean a little and translator was very halpful. Without translator, we couldn't any conversation. 
+But fortunatly Zheng jun can understand korean a little and translator was very halpful. This work changed my mind to "Skill of communication is the most important thing". 
+
+We divide work.
+- Young Wook Choi : Enemy AI and Level Design
+- Zheng Jun : Player and UI
+
+But, as time passed we had problems. First, Zheng Jun wants to be an artist but his major is Game Software. So He had a problem with coding. I was dicdied to change our divided work. 
+- Young Wook Choi : Player and Enemy AI and Level Design
+- Zheng Jun : UI
+
+But that point which was dicdie to change work, it was too late to complete our project. Yes, our project was failed to finish. 
+
 
 
