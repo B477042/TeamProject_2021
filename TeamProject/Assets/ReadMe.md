@@ -2,7 +2,7 @@
 As i said in front of this project's ReadMe, Zheng Jun was not good at programming because he's goal is to be artist. So file structre was being mess.
 But i think it can be good example of co-op mistakes. So, i don't wanna fix this mess.
 
-## About code that located this folder
+## About codes that located this folder
 And I don't know about in this folder. 
 Some codes was written by me. But i wasn't let my codes in default script folder. 
 I think when we merged this project, this project occured.
