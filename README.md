@@ -47,5 +47,8 @@ But, as time passed we had problems. First, Zheng Jun wants to be an artist but 
 
 But that point which was dicdie to change work, it was too late to complete our project. Yes, our project was failed to finish. 
 
+## [Go to scripts](https://github.com/B477042/TeamProject_2021/tree/main/TeamProject/Assets/Script)
+
+
 ***
  This paragraphs written by Young Wook Choi
