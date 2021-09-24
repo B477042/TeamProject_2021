@@ -43,7 +43,7 @@ We divide work.
 
 But, as time passed we had problems. First, Zheng Jun wants to be an artist but his major is Game Software. So He had a problem with coding. I was dicdied to change our divided work. 
 - Young Wook Choi : Player and Enemy AI and Level Design
-- Zheng Jun : UI
+- Zheng Jun : UI, Sounds
 
 But that point which was dicdie to change work, it was too late to complete our project. Yes, our project was failed to finish. 
 
