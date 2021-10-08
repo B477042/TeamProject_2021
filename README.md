@@ -47,7 +47,7 @@ But, as time passed we had problems. First, Zheng Jun wants to be an artist but 
 
 ---
 - Young Wook Choi : Player and Enemy AI and Level Design
-- Zheng Jun : UI, Sounds
+- Zheng Jun : UI, Sounds, Assets, Concept
 
 But that point which was dicdie to change work, it was too late to complete our project. Yes, our project was failed to finish. 
 
